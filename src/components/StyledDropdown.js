@@ -2,10 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import Entypo from 'react-native-vector-icons/Entypo';
-import { TRADE_TYPES } from '../config/constant';
 
-function StyledDropDown() {
-	const [ value, setValue ] = React.useState('');
+function StyledDropDown(props) {
+	const { data, value, onChange } = props;
 
 	const renderItem = (item) => {
 		return (
@@ -21,18 +20,18 @@ function StyledDropDown() {
 			placeholderStyle={styles.placeholderStyle}
 			selectedTextStyle={styles.selectedTextStyle}
 			iconStyle={styles.iconStyle}
-			data={TRADE_TYPES}
+			data={data}
 			// search
 			maxHeight={300}
 			labelField="label"
 			valueField="value"
-			placeholder="Select item"
+			placeholder={value}
 			searchPlaceholder="Search..."
 			value={value}
 			onChange={(item) => {
-				setValue(item.value);
+				onChange(item.value);
 			}}
-			renderRightIcon={() => <Entypo color="#fff" name="chevron-down" size={20} />}
+			renderRightIcon={() => <Entypo style={styles.iconStyle} color="#fff" name="chevron-down" size={16} />}
 			renderItem={renderItem}
 		/>
 	);
@@ -42,13 +41,11 @@ const styles = StyleSheet.create({
 	dropdown: {
 		height: 50,
 		backgroundColor: '#1f2021',
-		borderColor: 'gray',
-		borderWidth: 0.5,
 		borderRadius: 14,
 		paddingRight: 10,
 		paddingLeft: 10,
-		// shadowColor: '#000',
-		paddingHorizontal: 8
+		paddingHorizontal: 8,
+		marginBottom: 10
 	},
 	icon: {
 		marginRight: 5
@@ -64,8 +61,9 @@ const styles = StyleSheet.create({
 		textAlign: 'center'
 	},
 	iconStyle: {
-		width: 20,
-		height: 20
+		paddingLeft: 4,
+		borderLeftColor: '#fff',
+		borderLeftWidth: 1
 	},
 	item: {
 		backgroundColor: '#1f2021',
