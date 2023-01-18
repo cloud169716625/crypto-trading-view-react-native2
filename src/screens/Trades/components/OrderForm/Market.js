@@ -1,8 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, Pressable, Text } from 'react-native';
+import { View, Pressable, Text } from 'react-native';
 
 // components
 import StyledAmountInput from '../../../../components/StyledAmountInput';
+
+// styles
+import styles from './styles';
 
 function Market(props) {
 	const { orderType } = props;
@@ -32,46 +35,9 @@ function Market(props) {
 				<Text style={styles.availPrice}>0 USDT</Text>
 			</View>
 			<Pressable style={[ styles.button, { backgroundColor: orderType === 'buy' ? '#34bc75' : '#d83100' } ]}>
-				<Text style={styles.btnText}>Buy BTC</Text>
+				<Text style={styles.btnText}>{orderType === 'buy' ? 'Buy' : 'Sell'} BTC</Text>
 			</Pressable>
 		</View>
 	);
 }
-
-const styles = StyleSheet.create({
-	button: {
-		borderRadius: 14,
-		textAlign: 'center',
-		padding: 12
-	},
-	btnText: {
-		color: '#fff'
-	},
-	availView: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		marginBottom: 10
-	},
-	availText: {
-		color: '#ffffff80'
-	},
-	availPrice: {
-		color: '#fff'
-	},
-	marketPriceBtn: {
-		backgroundColor: '#1f2021',
-		borderRadius: 14,
-		textAlign: 'center',
-		padding: 12,
-		marginBottom: 10
-	},
-	amountBtn: {
-		borderRadius: 14,
-		textAlign: 'center',
-		padding: 8,
-		width: '49%',
-		backgroundColor: '#1f2021'
-	}
-});
-
 export default Market;

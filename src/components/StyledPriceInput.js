@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TextInput } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 function StyledPriceInput(props) {
-	const { placeholder, value, onChange, control, disabled } = props;
+	const { placeholder, value, onChange, control, disabled, showPrice } = props;
 
 	return (
 		<View style={{ marginBottom: 10 }}>
@@ -20,7 +20,7 @@ function StyledPriceInput(props) {
 				/>
 				{control && <Entypo name="plus" size={16} color="#fff" onPress={() => onChange(Number(value) + 1)} />}
 			</View>
-			<Text style={styles.text}>= {value} USD</Text>
+			{showPrice && <Text style={styles.text}>= {value} USD</Text>}
 		</View>
 	);
 }
