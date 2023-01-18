@@ -1,9 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Pressable, Text } from 'react-native';
+import { View, Pressable, Text } from 'react-native';
 
 // components
 import StyledPriceInput from '../../../../components/StyledPriceInput';
 import StyledAmountInput from '../../../../components/StyledAmountInput';
+
+// styles
+import styles from './styles';
 
 function Limit(props) {
 	const { orderType } = props;
@@ -29,7 +32,7 @@ function Limit(props) {
 	);
 	return (
 		<View>
-			<StyledPriceInput value={price} placeholder="Price (USDT)" onChange={handlePrice} control />
+			<StyledPriceInput value={price} placeholder="Price (USDT)" onChange={handlePrice} control showPrice />
 			<StyledAmountInput value={amount} placeholder="Amount (BTC)" onChange={handleAmount} />
 			<StyledPriceInput disabled value={vol} placeholder="Vol (USDT)" />
 			<View style={styles.availView}>
@@ -37,32 +40,10 @@ function Limit(props) {
 				<Text style={styles.availPrice}>0 USDT</Text>
 			</View>
 			<Pressable style={[ styles.button, { backgroundColor: orderType === 'buy' ? '#34bc75' : '#d83100' } ]}>
-				<Text style={styles.btnText}>Buy BTC</Text>
+				<Text style={styles.btnText}>{orderType === 'buy' ? 'Buy' : 'Sell'} BTC</Text>
 			</Pressable>
 		</View>
 	);
 }
-
-const styles = StyleSheet.create({
-	button: {
-		borderRadius: 14,
-		textAlign: 'center',
-		padding: 12
-	},
-	btnText: {
-		color: '#fff'
-	},
-	availView: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		marginBottom: 10
-	},
-	availText: {
-		color: '#ffffff80'
-	},
-	availPrice: {
-		color: '#fff'
-	}
-});
 
 export default Limit;

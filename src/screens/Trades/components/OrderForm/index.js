@@ -1,10 +1,18 @@
 import React from 'react';
-import { StyleSheet, View, Pressable, Text } from 'react-native';
+import { View, Pressable, Text } from 'react-native';
+
 // components
 import StyledDropDown from '../../../../components/StyledDropdown';
 import Limit from './Limit';
 import Market from './Market';
+import StopLimit from './StopLimit';
+import OCO from './OCO';
+
+// constant
 import { TRADE_TYPES } from '../../../../config/constant';
+
+// styles
+import styles from './styles';
 
 function OrderForm() {
 	const [ orderType, setOrderType ] = React.useState('buy');
@@ -31,43 +39,16 @@ function OrderForm() {
 				</Pressable>
 			</View>
 			<StyledDropDown data={TRADE_TYPES} value={tradeType} onChange={(data) => setTradeType(data)} />
-			{tradeType === 'limit' ? <Limit orderType={orderType} /> : <Market orderType={orderType} />}
+			{tradeType === 'limit' ? (
+				<Limit orderType={orderType} />
+			) : tradeType === 'market' ? (
+				<Market orderType={orderType} />
+			) : tradeType === 'stopLimit' ? (
+				<StopLimit orderType={orderType} />
+			) : (
+				<OCO orderType={orderType} />
+			)}
 		</View>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		marginHorizontal: 16
-	},
-	buyBtn: {
-		borderTopLeftRadius: 40,
-		borderTopRightRadius: 0,
-		borderBottomLeftRadius: 40,
-		borderBottomRightRadius: 40,
-		textAlign: 'center',
-		padding: 12,
-		width: '49%'
-	},
-	sellBtn: {
-		borderTopLeftRadius: 40,
-		borderTopRightRadius: 40,
-		borderBottomLeftRadius: 0,
-		borderBottomRightRadius: 40,
-		textAlign: 'center',
-		padding: 12,
-		width: '49%'
-	},
-	btnText: {
-		color: '#fff'
-	},
-	row: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		marginBottom: 12
-	}
-});
-
 export default OrderForm;

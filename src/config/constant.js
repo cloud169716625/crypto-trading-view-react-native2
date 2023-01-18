@@ -8,8 +8,8 @@ export const TRADE_TYPES = [
 		value: 'market'
 	},
 	{
-		label: 'Spot Limit',
-		value: 'spotLimit'
+		label: 'Stop Limit',
+		value: 'stopLimit'
 	},
 	{
 		label: 'OCO',

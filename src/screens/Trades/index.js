@@ -1,18 +1,21 @@
 import React from 'react';
 import { StyleSheet, View, Pressable, Text } from 'react-native';
+
 // components
 import OrderForm from './components/OrderForm';
+import OrderBook from './components/OrderBook';
 
 function Trades() {
 	return (
-		<View style={styles.container}>
+		<View style={styles.root}>
 			<OrderForm />
+			<OrderBook />
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-	container: {
+	root: {
 		flex: 1,
 		justifyContent: 'center',
 		backgroundColor: '#0d0e0f',
