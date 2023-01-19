@@ -86,7 +86,8 @@ const styles = StyleSheet.create({
 		border: 'none',
 		textAlign: 'center',
 		color: '#fff',
-		outlineStyle: 'none'
+		outlineStyle: 'none',
+		width: '80%'
 	},
 	text: {
 		paddingTop: 4,

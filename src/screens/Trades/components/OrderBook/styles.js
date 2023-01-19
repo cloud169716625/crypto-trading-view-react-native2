@@ -5,8 +5,6 @@ const styles = StyleSheet.create({
 		position: 'relative',
 		height: '100%',
 		maxWidth: '20em',
-		marginLeft: 'auto',
-		marginRight: 'auto',
 		display: 'flex',
 		flexDirection: 'column'
 	},
@@ -23,19 +21,28 @@ const styles = StyleSheet.create({
 		overflowY: 'hidden'
 	},
 	sellPrice: {
-		color: '#d83100'
+		color: '#d83100',
+		fontSize: 12
 	},
 	buyPrice: {
-		color: '#34bc75'
+		color: '#34bc75',
+		fontSize: 12
 	},
 	amountText: {
-		color: '#929292'
+		color: '#929292',
+		fontSize: 12
 	},
 	itemContainer: {
-		padding: 4,
+		paddingTop: 1,
+		paddingBottom: 1,
+		paddingLeft: 4,
+		paddingRight: 4,
 		display: 'flex',
-		flexBasis: '50%',
-		flexDirection: 'row'
+		flexDirection: 'row',
+		justifyContent: 'space-between'
+	},
+	mb12: {
+		marginBottom: 12
 	}
 });
 

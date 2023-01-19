@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: 'center',
-		marginHorizontal: 16
+		justifyContent: 'start',
+		marginRight: 16
 	},
 	buyBtn: {
 		borderTopLeftRadius: 40,
