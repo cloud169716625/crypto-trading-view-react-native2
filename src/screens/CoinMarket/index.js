@@ -16,19 +16,19 @@ function CoinMarket() {
 	const pairList = useSelector((state) => state?.coinMarket?.coinPairList);
 	const dayPriceList = useSelector((state) => state?.coinMarket?.dayPriceList);
 	const [ curTab, setCurTab ] = useState('all');
-	const [ curCoin, setCurCoin ] = useState('BNB');
+	const [ curCoin, setCurCoin ] = useState('USDT');
 	const [ searchText, setSearchText ] = useState('');
-	const [ newCoinPairs, setNewCoinPairs] = useState([])
+	const [ newCoinPairs, setNewCoinPairs] = useState([]);
+	const [ searchResult, setSearchResult ] = useState([]);
  
-	const handleCoinPair = (items) => {
-		let temp = []
+	const handleCoinPair = (items) => { 
+		let temp = [] 
 		items.map((item) => {
-			const quoteCoinSymbol = item.quoteAsset
-			const day_price = dayPriceList.find(x => {return x.symbol === item.symbol})?.lastPrice
-			console.log(day_price)
-			const percent = dayPriceList.find(x => {return x.symbol === item.symbol})?.priceChangePercent
-			const quoteCoinInfo = COIN_ICONS.find(x => x.symbol === quoteCoinSymbol.toLowerCase()) 
-			if(quoteCoinInfo) {
+			const quoteCoinSymbol = item.baseAsset === curCoin ? item.quoteAsset : item.baseAsset 
+			const day_price = dayPriceList.find(element => {return element.symbol === item.baseAsset + item.quoteAsset || element.symbol === item.quoteAsset + item.baseAsset})?.lastPrice
+			const percent = dayPriceList.find(element => {return element.symbol === item.baseAsset + item.quoteAsset || element.symbol === item.quoteAsset + item.baseAsset})?.priceChangePercent
+			const quoteCoinInfo = COIN_ICONS.find(element => element.symbol === quoteCoinSymbol.toLowerCase()) 
+			if(quoteCoinInfo && day_price > 0) {
 				const data = {
 					symbol: quoteCoinSymbol,
 					price: day_price,
@@ -49,9 +49,16 @@ function CoinMarket() {
 
 	useEffect(() => {
 		if(pairList.length > 0 && dayPriceList) {
-			handleCoinPair(pairList.filter(x => x.baseAsset === curCoin))
+			handleCoinPair(pairList.filter(x => x.baseAsset === curCoin || x.quoteAsset === curCoin))
 		}
 	}, [curCoin, pairList.length, dayPriceList.length])
+
+	useEffect(() => {
+		setSearchResult(newCoinPairs.filter(element => {return (element.symbol.toLowerCase()).includes(searchText.toLocaleLowerCase())}))
+	}, [searchText])
+
+	console.log(searchResult)
+ 
 
 	return (
 		<View style={styles.container}>
@@ -114,9 +121,11 @@ function CoinMarket() {
 					</Pressable>
 				))}
 			</View>
+			<View style={styles.scroll}>
 			{
-				newCoinPairs && newCoinPairs?.map((data, key) => <PariContent key={key} data={data} />)
+				searchText ? searchResult?.map((data, key) => <PariContent key={key} data={data} />) : newCoinPairs?.map((data, key) => <PariContent key={key} data={data} />)
 			}
+			</View>
 		</View>
 	);
 }
