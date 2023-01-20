@@ -11,6 +11,10 @@ const styles = StyleSheet.create({
 		paddingRight: 18,
 		paddingTop: 24
 	},
+	scroll: {
+		overflowY: 'auto',
+		height: '100%'
+	},
 	tabBtn: {
 		borderTopLeftRadius: 40,
 		borderTopRightRadius: 0,
@@ -106,6 +110,14 @@ const styles = StyleSheet.create({
 	downPercent: {
 		color: '#d83100',
 		textAlign: 'right'
+	},
+	upIcon: {
+		color: '#00c100',
+		marginBottom: -6
+	},
+	downIcon: {
+		color: '#d83100',
+		marginTop: -6
 	}
 });
 

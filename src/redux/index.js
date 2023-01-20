@@ -6,5 +6,9 @@ export const store = configureStore({
 	reducer: {
 		orderbook: orderbookSlice,
 		coinMarket: coinMarketSlice
-	}
+	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: false
+		})
 });

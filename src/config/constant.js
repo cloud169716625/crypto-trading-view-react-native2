@@ -35,8 +35,16 @@ export const TOKEN_SYMBOLS = [
 		symbol: 'ETH'
 	},
 	{
+		id: 4,
+		symbol: 'EOS'
+	},
+	{
 		id: 5,
-		symbol: 'ALTS'
+		symbol: 'LTC'
+	},
+	{
+		id: 6,
+		symbol: 'MATIC'
 	}
 ];
 
