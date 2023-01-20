@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -6,11 +6,26 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Foundation from 'react-native-vector-icons/Foundation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+// websocket
+import useWSClientHandle from '../api/useWSClientHandle';
+import { wsClient } from '../config/config';
+
 // Screens
 import SignIn from '../screens/Signin';
 import Trades from '../screens/Trades';
+import CoinMarket from '../screens/CoinMarket';
 
 export default function Navigation() {
+	const { handleMessage, handleError, handleOpen, handleClose } = useWSClientHandle();
+
+	React.useEffect(() => {
+		wsClient.onopen = handleOpen;
+		wsClient.onerror = handleError;
+		wsClient.onmessage = handleMessage;
+		wsClient.onclose = handleClose;
+		//eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const Stack = createNativeStackNavigator();
 	const Tab = createBottomTabNavigator();
 
@@ -25,8 +40,9 @@ export default function Navigation() {
 
 	const Main = () => {
 		return (
-			<Stack.Navigator initialRouteName="ServiceList">
-				<Stack.Screen name="ServiceList" component={Trades} options={{ headerShown: false }} />
+			<Stack.Navigator initialRouteName="CoinMarketScreen">
+				<Stack.Screen name="Trades" component={Trades} options={{ headerShown: false }} />
+				<Stack.Screen name="CoinMarketScreen" component={CoinMarket} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		);
 	};
@@ -101,12 +117,3 @@ export default function Navigation() {
 		</NavigationContainer>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center'
-	}
-});

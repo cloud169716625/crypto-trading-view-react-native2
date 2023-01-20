@@ -7,14 +7,12 @@ const useWSClientHandle = () => {
 
 	const handleOpen = () => {
 		console.log('ws connection opened');
-
 		const subscribe = {
 			event: 'bts:subscribe',
 			data: {
 				channel: `order_book_${currencyPair}`
 			}
 		};
-
 		wsClient.send(JSON.stringify(subscribe));
 	};
 

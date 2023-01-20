@@ -1,17 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+	buyOrderList: [],
+	sellOrderList: []
+};
+
 const orderbookSlice = createSlice({
 	name: 'orderbook',
-	initialState: {
-		updateBuyOrder: [],
-		updateSellOrder: []
-	},
+	initialState,
 	reducers: {
 		updateBuyOrder(state, action) {
-			state.updateBuyOrder = action.payload;
+			state.buyOrderList = action.payload;
 		},
 		updateSellOrder(state, action) {
-			state.updateSellOrder = action.payload;
+			state.sellOrderList = action.payload;
 		}
 	}
 });

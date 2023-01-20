@@ -25,7 +25,6 @@ function OrderForm() {
 		<View style={styles.container}>
 			<View style={styles.row}>
 				<Pressable
-					title="Buy"
 					style={[ styles.buyBtn, { backgroundColor: orderType === 'buy' ? '#34bc75' : '#1f2021' } ]}
 					onPress={() => handleOrderType('buy')}
 				>

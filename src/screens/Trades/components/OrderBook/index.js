@@ -1,19 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React  from 'react';
 import { View, Text } from 'react-native';
-// api
-import { getOrderBookAPI } from '../../../../api/trade';
+import { useSelector} from 'react-redux' 
 // style
 import styles from './styles';
 
-function OrderBook() {
-	const coinpair = 'BTCUSDT';
-	const [ orderbookList, setOrderookList ] = useState([]);
-
-	useEffect(() => {
-		getOrderBookAPI(coinpair).then((res) => setOrderookList(res));
-	}, []);
-
-	console.log(orderbookList);
+function OrderBook() { 
+	const buyOrderData = useSelector((state) => state?.orderbook?.buyOrderList);
+	const sellOrderData = useSelector((state) => state?.orderbook?.buyOrderList);
+	 
 
 	return (
 		<View style={styles.container}>
@@ -26,7 +20,7 @@ function OrderBook() {
 				<Text style={styles.amountText}>{`(BTC)`}</Text>
 			</View>
 			<View style={[styles.sellContainer, styles.mb12]}>
-				{orderbookList?.asks?.map((item, key) => (
+				{sellOrderData?.slice(0, 8)?.map((item, key) => (
 					<View style={styles.itemContainer} key={key}>
 						<Text style={styles.sellPrice}>{Number(item[0]).toFixed(2)}</Text>
 						<Text style={styles.amountText}>{Number(item[1]).toFixed(3)}</Text>
@@ -38,7 +32,7 @@ function OrderBook() {
 				<Text style={styles.amountText}>16,734.9 USD</Text>
 			</View>
 			<View style={styles.buyContainer}>
-				{orderbookList?.bids?.map((item, key) => (
+				{buyOrderData?.slice(0, 8)?.map((item, key) => (
 					<View style={styles.itemContainer} key={key}>
 						<Text style={styles.buyPrice}>{Number(item[0]).toFixed(2)}</Text>
 						<Text style={styles.amountText}>{Number(item[1]).toFixed(3)}</Text>
