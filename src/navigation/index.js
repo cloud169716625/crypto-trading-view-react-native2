@@ -10,10 +10,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import useWSClientHandle from '../api/useWSClientHandle';
 import { wsClient } from '../config/config';
 
-// Screens
-import SignIn from '../screens/Signin';
-import Trades from '../screens/Trades';
-import CoinMarket from '../screens/CoinMarket';
+// views
+import SignIn from '../views/Signin';
+import Trades from '../views/Trades';
+import CoinMarket from '../views/CoinMarket';
+import TradingViewChart from '../views/TradingViewChart';
 
 export default function Navigation() {
 	const { handleMessage, handleError, handleOpen, handleClose } = useWSClientHandle();
@@ -40,9 +41,14 @@ export default function Navigation() {
 
 	const Main = () => {
 		return (
-			<Stack.Navigator initialRouteName="CoinMarketScreen">
+			<Stack.Navigator initialRouteName="TradingViewChartScreen">
 				<Stack.Screen name="Trades" component={Trades} options={{ headerShown: false }} />
 				<Stack.Screen name="CoinMarketScreen" component={CoinMarket} options={{ headerShown: false }} />
+				<Stack.Screen
+					name="TradingViewChartScreen"
+					component={TradingViewChart}
+					options={{ headerShown: false }}
+				/>
 			</Stack.Navigator>
 		);
 	};
