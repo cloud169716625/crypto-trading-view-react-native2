@@ -61,7 +61,7 @@ function CoinMarket() {
 	return (
 		<View style={styles.container}>
 			<View>
-			<Header />
+				<Header />
 			</View>
 			<View style={styles.tabContainer}>
 				<View style={styles.itemContainer}>

@@ -5,16 +5,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 // websocket
 import useWSClientHandle from '../api/useWSClientHandle';
 import { wsClient } from '../config/config';
 
-// views
-import SignIn from '../views/Signin';
-import Trades from '../views/Trades';
-import CoinMarket from '../views/CoinMarket';
-import TradingViewChart from '../views/TradingViewChart';
+// screens
+import SignIn from '../screens/Auth/Signin';
+import Trades from '../screens/Trades';
+import CoinMarket from '../screens/CoinMarket';
+import TradingViewChart from '../screens/TradingViewChart';
 
 export default function Navigation() {
 	const { handleMessage, handleError, handleOpen, handleClose } = useWSClientHandle();
@@ -31,7 +30,6 @@ export default function Navigation() {
 	const Tab = createBottomTabNavigator();
 
 	const Auth = () => {
-		// Stack Navigator for Login and Sign up Screen
 		return (
 			<Stack.Navigator initialRouteName="SignInScreen">
 				<Stack.Screen name="SignInScreen" component={SignIn} options={{ headerShown: false }} />
@@ -41,14 +39,9 @@ export default function Navigation() {
 
 	const Main = () => {
 		return (
-			<Stack.Navigator initialRouteName="TradingViewChartScreen">
+			<Stack.Navigator initialRouteName="Trades">
 				<Stack.Screen name="Trades" component={Trades} options={{ headerShown: false }} />
 				<Stack.Screen name="CoinMarketScreen" component={CoinMarket} options={{ headerShown: false }} />
-				<Stack.Screen
-					name="TradingViewChartScreen"
-					component={TradingViewChart}
-					options={{ headerShown: false }}
-				/>
 			</Stack.Navigator>
 		);
 	};
@@ -116,9 +109,13 @@ export default function Navigation() {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator initialRouteName="Main">
-				{/* <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} /> */}
 				<Stack.Screen name="Auth" component={Auth} options={{ headerShown: false }} />
 				<Stack.Screen name="Main" component={Nav} options={{ headerShown: false }} />
+				<Stack.Screen
+					name="TradingViewChartScreen"
+					component={TradingViewChart}
+					options={{ headerShown: false }}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

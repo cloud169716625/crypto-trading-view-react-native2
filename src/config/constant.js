@@ -41,10 +41,6 @@ export const TOKEN_SYMBOLS = [
 	{
 		id: 5,
 		symbol: 'LTC'
-	},
-	{
-		id: 6,
-		symbol: 'MATIC'
 	}
 ];
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, ScrollView } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './styles';
@@ -9,12 +10,21 @@ import OrderInfo from './components/OrderInfo';
 import Header from '../../components/Header';
 
 function Trades() {
+	const navigation = useNavigation();
+
 	return (
 		<View style={styles.root}>
 			<Header />
 			<View style={styles.headerContainer}>
-				<MaterialCommunityIcons name="text-short" color="#fff" size={32} />
-				<Text style={styles.pair}>BTC/USDT</Text>
+				<MaterialCommunityIcons
+					onPress={() => navigation.navigate('TradingViewChartScreen')}
+					name="text-short"
+					color="#fff"
+					size={32}
+				/>
+				<Text onPress={() => navigation.navigate('CoinMarketScreen')} style={styles.pair}>
+					BTC/USDT
+				</Text>
 				<Text style={styles.percent}>+0.88%</Text>
 			</View>
 			<ScrollView>

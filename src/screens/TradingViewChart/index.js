@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Pressable, Text } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useNavigation } from '@react-navigation/native'
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
 import Header from './Header';
 
@@ -43,7 +44,14 @@ const TradingViewChart = () => {
 				<View>
 					<Text style={styles.price}>{(((Number(coinInfo?.highPrice) + Number(coinInfo?.lowPrice)) / 2).toFixed(2)).toString()}</Text>
 					<Text style={styles.usdPrice}>=${Number(price).toFixed(2)} <Text style={Number(coinInfo?.priceChangePercent) > 0 ? styles.green : styles.red}>{coinInfo?.priceChangePercent} %</Text></Text>
-					<Text style={styles.quote}>Top 1 in Popularity</Text>
+					<View style={styles.row}>
+						<Text style={styles.quote}>Top 1 in Popularity</Text>
+						<AntDesign 
+							name="ellipsis1"
+							color="#ffffff80"
+							size={18}
+						/>
+					</View>
 				</View>
 				<View style={[styles.row, {width: '50%'}]}>
 					<View>
