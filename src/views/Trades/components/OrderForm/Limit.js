@@ -26,6 +26,8 @@ function Limit(props) {
 		() => {
 			if (price !== '' && amount !== '') {
 				setVol(Number(price) * Number(amount));
+			} else {
+				setVol('');
 			}
 		},
 		[ price, amount ]
@@ -34,7 +36,9 @@ function Limit(props) {
 		<View>
 			<StyledPriceInput value={price} placeholder="Price (USDT)" onChange={handlePrice} control showPrice />
 			<StyledAmountInput value={amount} placeholder="Amount (BTC)" onChange={handleAmount} />
-			<StyledPriceInput disabled value={vol} placeholder="Vol (USDT)" />
+			<View style={styles.volView}>
+				<Text style={styles.vol}>{vol === '' ? 'Vol (USDT)' : vol}</Text>
+			</View>
 			<View style={styles.availView}>
 				<Text style={styles.availText}>Avail.</Text>
 				<Text style={styles.availPrice}>0 USDT</Text>

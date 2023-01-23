@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: 'start',
+		// alignItems: 'left',
 		marginRight: 16
 	},
 	buyBtn: {
@@ -24,9 +24,6 @@ const styles = StyleSheet.create({
 		padding: 12,
 		width: '49%'
 	},
-	btnText: {
-		color: '#fff'
-	},
 	row: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
@@ -38,7 +35,18 @@ const styles = StyleSheet.create({
 		padding: 12
 	},
 	btnText: {
-		color: '#fff'
+		color: '#fff',
+		textAlign: 'center'
+	},
+	volView: {
+		backgroundColor: '#1f2021',
+		width: '100%',
+		padding: 10,
+		alignItems: 'center',
+		borderRadius: 14
+	},
+	vol: {
+		color: '#ffffff80'
 	},
 	availView: {
 		flexDirection: 'row',

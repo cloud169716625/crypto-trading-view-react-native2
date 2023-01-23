@@ -15,7 +15,7 @@ function StyledPriceInput(props) {
 					placeholderTextColor="#ffffff80"
 					keyboardType="number-pad"
 					value={value}
-					onChange={(amount) => onChange(amount.target.value)}
+					onChangeText={(amount) => onChange(amount)}
 					disabled={disabled ? true : false}
 				/>
 				{control && <Entypo name="plus" size={16} color="#fff" onPress={() => onChange(Number(value) + 1)} />}

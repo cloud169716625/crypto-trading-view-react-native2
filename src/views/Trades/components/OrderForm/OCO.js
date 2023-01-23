@@ -20,6 +20,8 @@ function OCO(props) {
 		() => {
 			if (stopPrice !== '' && stopLimitAmount !== '') {
 				setTotalPrice(Number(stopPrice) * Number(stopLimitAmount));
+			} else {
+				setTotalPrice('');
 			}
 		},
 		[ stopPrice, stopLimitAmount ]
@@ -51,7 +53,9 @@ function OCO(props) {
 				placeholder="Amount (BTC)"
 				onChange={(data) => setStopLimitAmount(data)}
 			/>
-			<StyledPriceInput disabled value={totalPrice} placeholder="Total (USDT)" />
+			<View style={styles.volView}>
+				<Text style={styles.vol}>{totalPrice === '' ? 'Total (USDT)' : totalPrice}</Text>
+			</View>
 			<View style={styles.availView}>
 				<Text style={styles.availText}>Avail.</Text>
 				<Text style={styles.availPrice}>0 USDT</Text>

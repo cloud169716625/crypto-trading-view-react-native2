@@ -1,13 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-	container: {
-		position: 'relative',
-		height: '100%',
-		maxWidth: '20em',
-		display: 'flex',
-		flexDirection: 'column'
-	},
 	tabContainer: {
 		flexDirection: 'row',
 		marginTop: 30
@@ -21,7 +14,7 @@ const styles = StyleSheet.create({
 		paddingBottom: 4
 	},
 	tableHead: {
-		height: 'fit-content',
+		width: 'auto',
 		border: 'none'
 	},
 	tableHeadText: {
@@ -35,8 +28,7 @@ const styles = StyleSheet.create({
 	},
 	tableRowText: {
 		color: '#fff',
-		fontSize: 12,
-		display: 'block',
+		fontSize: 10,
 		textAlign: 'right',
 		whiteSpace: 'break-spaces'
 	},
