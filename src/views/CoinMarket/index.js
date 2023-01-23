@@ -6,6 +6,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { getAllPairs, getDayPrices } from '../../redux/coinMarket';
 // components
 import PariContent from './PairContent';
+import Header from '../../components/Header';
 // styles
 import styles from './styles';
 // constants
@@ -53,15 +54,15 @@ function CoinMarket() {
 		}
 	}, [curCoin, pairList.length, dayPriceList.length])
 
-	useEffect(() => {
-		setSearchResult(newCoinPairs.filter(element => {return (element.symbol.toLowerCase()).includes(searchText.toLocaleLowerCase())}))
-	}, [searchText])
-
-	console.log(searchResult)
- 
+	useEffect(() => { 
+		setSearchResult(newCoinPairs.filter(element => {return (element.symbol.toLowerCase()).includes(searchText.toLowerCase())}))
+	}, [searchText]) 
 
 	return (
 		<View style={styles.container}>
+			<View>
+			<Header />
+			</View>
 			<View style={styles.tabContainer}>
 				<View style={styles.itemContainer}>
 					<Pressable
@@ -94,7 +95,7 @@ function CoinMarket() {
 						placeholder="...search"
 						placeholderTextColor="#ffffff90"
 						value={searchText}
-						onChange={(e) => setSearchText(e.target.value)}
+						onChangeText={text => setSearchText(text)}
 					/>
 					<Pressable style={styles.searchBtn}>
 						<FontAwesome name="search" size={16} color="#0d0e0f" />

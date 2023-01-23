@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
 	container: {
 		position: 'relative',
 		height: '100%',
-		maxWidth: '20em',
+		// maxWidth: '20em',
 		display: 'flex',
 		flexDirection: 'column'
 	},

@@ -19,6 +19,8 @@ function StopLimit(props) {
 		() => {
 			if (stopPrice !== '' && amount !== '') {
 				setTotalPrice(Number(stopPrice) * Number(amount));
+			} else {
+				setTotalPrice('');
 			}
 		},
 		[ stopPrice, amount ]
@@ -38,7 +40,9 @@ function StopLimit(props) {
 				control
 			/>
 			<StyledAmountInput value={amount} placeholder="Amount (BTC)" onChange={(data) => setAmount(data)} />
-			<StyledPriceInput disabled value={totalPrice} placeholder="Total (USDT)" />
+			<View style={styles.volView}>
+				<Text style={styles.vol}>{totalPrice === '' ? 'Total (USDT)' : totalPrice}</Text>
+			</View>
 			<View style={styles.availView}>
 				<Text style={styles.availText}>Avail.</Text>
 				<Text style={styles.availPrice}>0 USDT</Text>

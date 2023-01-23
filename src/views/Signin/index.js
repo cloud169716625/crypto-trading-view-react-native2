@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
 	},
 	titleText: {
 		fontSize: 28,
-		fontWeight: 'bold',
 		textAlign: 'center',
 		color: '#fff',
 		marginTop: 20,
@@ -89,8 +88,7 @@ const styles = StyleSheet.create({
 	buttonText: {
 		textAlign: 'center',
 		color: 'white',
-		fontSize: 14,
-		fontWeight: '500'
+		fontSize: 14
 	},
 	inputStyle: {
 		color: '#fff',

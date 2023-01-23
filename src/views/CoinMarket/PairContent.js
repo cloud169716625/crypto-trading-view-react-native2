@@ -7,7 +7,7 @@ function PariContent(props) {
 	return (
 		<View style={[ styles.row, styles.pairContainer ]}>
 			<View style={[ styles.row ]}>
-				<Image source={data.icon} style={styles.icon} alt="icon" />
+				<Image source={{ uri: data.icon }} style={styles.icon} alt="icon" />
 				<View>
 					<Text style={styles.name}>{data.name}</Text>
 					<Text style={styles.symbol}>{data.symbol}</Text>

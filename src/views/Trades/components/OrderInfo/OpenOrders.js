@@ -9,7 +9,7 @@ function OpenOrders() {
 	return (
 		<View>
 			<DataTable>
-				<DataTable.Header style={{ border: 'none', height: 'fit-content', padding: 0 }}>
+				<DataTable.Header style={{ padding: 0 }}>
 					<DataTable.Title style={{ maxWidth: 40 }} />
 					<DataTable.Title numeric>
 						<Text style={styles.tableHeadText}>Date and Time</Text>
@@ -30,24 +30,28 @@ function OpenOrders() {
 				</DataTable.Header>
 				{OPEN_ORDERS.map((item, key) => (
 					<DataTable.Row style={[ styles.tableRow, { padding: 0 } ]} key={key}>
-						<DataTable.Cell style={{ maxWidth: 40, height: 'fit-content' }}>
-							<Text style={{ color: item.type === 0 ? '#34bc75' : '#d83100' }}>
+						<DataTable.Cell style={{ maxWidth: 30 }}>
+							<Text style={{ fontSize: 10, color: item.type === 0 ? '#34bc75' : '#d83100' }}>
 								{item.type === 0 ? 'BUY' : 'SELL'}
 							</Text>
 						</DataTable.Cell>
-						<DataTable.Cell numeric style={{ height: 'fit-content', justifyContent: 'end' }}>
-							<Text style={styles.tableRowText}>{item.date}</Text>
-							<Text style={styles.timeText}>{item.time}</Text>
+						<DataTable.Cell numeric>
+							<View>
+								<Text style={styles.tableRowText}>{item.date}</Text>
+								<Text style={styles.timeText}>{item.time}</Text>
+							</View>
 						</DataTable.Cell>
-						<DataTable.Cell numeric style={{ height: 'fit-content' }}>
+						<DataTable.Cell numeric>
 							<Text style={styles.tableRowText}>{item.amount}</Text>
 						</DataTable.Cell>
-						<DataTable.Cell numeric style={{ height: 'fit-content' }}>
+						<DataTable.Cell numeric>
 							<Text style={styles.tableRowText}>{item.value} USD</Text>
 						</DataTable.Cell>
-						<DataTable.Cell numeric style={{ height: 'fit-content' }}>
-							<Text style={styles.tableRowText}>{item.rate} USD</Text>
-							<Text style={styles.tableRowText}>{item.fee} USD</Text>
+						<DataTable.Cell numeric>
+							<View>
+								<Text style={styles.tableRowText}>{item.rate} USD</Text>
+								<Text style={styles.tableRowText}>{item.fee} USD</Text>
+							</View>
 						</DataTable.Cell>
 					</DataTable.Row>
 				))}

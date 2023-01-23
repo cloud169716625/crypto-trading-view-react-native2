@@ -20,7 +20,7 @@ function StyledAmountInput(props) {
 					placeholderTextColor="#ffffff80"
 					keyboardType="number-pad"
 					value={value}
-					onChange={(amount) => onChange(amount.target.value)}
+					onChangeText={(amount) => onChange(amount)}
 				/>
 				<Entypo name="plus" color="#fff" size={16} onPress={() => onChange(Number(value) + 1)} />
 			</View>
@@ -90,9 +90,9 @@ const styles = StyleSheet.create({
 		width: '80%'
 	},
 	text: {
-		paddingTop: 4,
-		paddingBottom: 4,
-		width: 60,
+		paddingTop: 2,
+		paddingBottom: 2,
+		width: 40,
 		textAlign: 'center',
 		color: '#ffffff80',
 		borderRadius: 6
