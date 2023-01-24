@@ -66,27 +66,27 @@ function CoinMarket() {
 			<View style={styles.tabContainer}>
 				<View style={styles.itemContainer}>
 					<Pressable
-						style={[ styles.tabBtn, { backgroundColor: curTab === 'all' ? '#34bc75' : 'transparent' } ]}
+						style={[ styles.tabBtn, curTab === 'all' ? styles.activeBtn : styles.inactiveBtn ]}
 						onPress={() => setCurTab('all')}
 					>
-						<Text style={[ styles.btnText, { color: curTab === 'all' ? '#fff' : '#ffffff80' } ]}>All</Text>
+						<Text style={[ styles.btnText, curTab === 'all' ? styles.activeTxt : styles.inactiveTxt ]}>All</Text>
 					</Pressable>
 					<Pressable
 						style={[
 							styles.tabBtn,
-							{ backgroundColor: curTab === 'metaverse' ? '#34bc75' : 'transparent' }
+							 curTab === 'metaverse' ? styles.activeBtn : styles.inactiveBtn
 						]}
 						onPress={() => setCurTab('metaverse')}
 					>
-						<Text style={[ styles.btnText, { color: curTab === 'metaverse' ? '#fff' : '#ffffff80' } ]}>
+						<Text style={[ styles.btnText, curTab === 'metaverse' ? styles.activeTxt : styles.inactiveTxt ]}>
 							Metaverse
 						</Text>
 					</Pressable>
 					<Pressable
-						style={[ styles.tabBtn, { backgroundColor: curTab === 'nft' ? '#34bc75' : 'transparent' } ]}
+						style={[ styles.tabBtn,  curTab === 'nft' ? styles.activeBtn : styles.inactiveBtn ]}
 						onPress={() => setCurTab('nft')}
 					>
-						<Text style={[ styles.btnText, { color: curTab === 'nft' ? '#fff' : '#ffffff80' } ]}>NFT</Text>
+						<Text style={[ styles.btnText, curTab === 'nft' ? styles.activeTxt : styles.inactiveTxt ]}>NFT</Text>
 					</Pressable>
 				</View>
 				<View style={styles.searchContainer}>
@@ -104,7 +104,7 @@ function CoinMarket() {
 			</View>
 			<View style={styles.tokenContainer}>
 				<Pressable
-					style={[ styles.tokenBtn, { borderColor: curCoin === 'Favorites' ? '#34bc75' : 'transparent' } ]}
+					style={[ styles.tokenBtn, curCoin === 'Favorites' ? styles.activeCoin : styles.inactiveCoin ]}
 					onPress={() => setCurCoin('Favorites')}
 				>
 					<Text style={styles.btnText}>Favorites</Text>
@@ -114,7 +114,7 @@ function CoinMarket() {
 						key={key}
 						style={[
 							styles.tokenBtn,
-							{ borderColor: curCoin === item.symbol ? '#34bc75' : 'transparent' }
+							  curCoin === item.symbol ? styles.activeCoin : styles.inactiveCoin 
 						]}
 						onPress={() => setCurCoin(item.symbol)}
 					>

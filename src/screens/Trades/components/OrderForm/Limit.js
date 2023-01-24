@@ -43,7 +43,7 @@ function Limit(props) {
 				<Text style={styles.availText}>Avail.</Text>
 				<Text style={styles.availPrice}>0 USDT</Text>
 			</View>
-			<Pressable style={[ styles.button, { backgroundColor: orderType === 'buy' ? '#34bc75' : '#d83100' } ]}>
+			<Pressable style={[ styles.button, orderType === 'buy' ? styles.greenBtn : styles.redBtn ]}>
 				<Text style={styles.btnText}>{orderType === 'buy' ? 'Buy' : 'Sell'} BTC</Text>
 			</Pressable>
 		</View>

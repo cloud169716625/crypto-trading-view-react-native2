@@ -37,6 +37,18 @@ const styles = StyleSheet.create({
 		fontSize: 10,
 		float: 'right',
 		marginTop: 4
+	},
+	activeTab: {
+		borderColor: '#34bc75'
+	},
+	inactiveTab: {
+		borderColor: 'transparent'
+	},
+	activeText: {
+		color: '#fff'
+	},
+	inactiveTxt: {
+		color: '#4d4f58'
 	}
 });
 

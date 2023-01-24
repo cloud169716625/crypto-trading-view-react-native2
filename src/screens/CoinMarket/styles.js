@@ -26,6 +26,24 @@ const styles = StyleSheet.create({
 		paddingLeft: 12,
 		paddingRight: 12
 	},
+	activeBtn: {
+		backgroundColor: '#34bc75'
+	},
+	inactiveBtn: {
+		backgroundColor: 'transparent'
+	},
+	activeTxt: {
+		color: '#fff'
+	},
+	inactiveTxt: {
+		color: '#ffffff80'
+	},
+	activeCoin: {
+		borderColor: '#34bc75'
+	},
+	inactiveCoin: {
+		borderColor: 'transparent'
+	},
 	btnText: {
 		color: '#fff',
 		fontSize: 12

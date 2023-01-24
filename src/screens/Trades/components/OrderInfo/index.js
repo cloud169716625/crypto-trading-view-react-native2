@@ -9,22 +9,24 @@ function OrderInfo() {
 		<View>
 			<View style={styles.tabContainer}>
 				<Pressable
-					style={[ styles.tabBtn, { borderColor: curTab === 'openOrders' ? '#34bc75' : 'transparent' } ]}
+					style={[ styles.tabBtn, curTab === 'openOrders' ? styles.activeTab : styles.inactiveTab ]}
 					onPress={() => setCurTab('openOrders')}
 				>
-					<Text style={{ color: curTab === 'openOrders' ? '#fff' : '#4d4f58' }}>Open Orders</Text>
+					<Text style={curTab === 'openOrders' ? styles.activeText : styles.inactiveTxt}>Open Orders</Text>
 				</Pressable>
 				<Pressable
-					style={[ styles.tabBtn, { borderColor: curTab === 'orderHistory' ? '#34bc75' : 'transparent' } ]}
+					style={[ styles.tabBtn, curTab === 'orderHistory' ? styles.activeTab : styles.inactiveTab ]}
 					onPress={() => setCurTab('orderHistory')}
 				>
-					<Text style={{ color: curTab === 'orderHistory' ? '#fff' : '#4d4f58' }}>Order History</Text>
+					<Text style={curTab === 'orderHistory' ? styles.activeText : styles.inactiveTxt}>
+						Order History
+					</Text>
 				</Pressable>
 				<Pressable
-					style={[ styles.tabBtn, { borderColor: curTab === 'transactions' ? '#34bc75' : 'transparent' } ]}
+					style={[ styles.tabBtn, curTab === 'transactions' ? styles.activeTab : styles.inactiveTab ]}
 					onPress={() => setCurTab('transactions')}
 				>
-					<Text style={{ color: curTab === 'transactions' ? '#fff' : '#4d4f58' }}>Transactions</Text>
+					<Text style={curTab === 'transactions' ? styles.activeText : styles.inactiveTxt}>Transactions</Text>
 				</Pressable>
 			</View>
 			<View>

@@ -72,6 +72,21 @@ const styles = StyleSheet.create({
 		padding: 8,
 		width: '49%',
 		backgroundColor: '#1f2021'
+	},
+	inactiveBtn: {
+		backgroundColor: '#1f2021'
+	},
+	redBtn: {
+		backgroundColor: '#d83100'
+	},
+	greenBtn: {
+		backgroundColor: '#34bc75'
+	},
+	activeTxt: {
+		color: '#fff'
+	},
+	inactiveTxt: {
+		color: '#ffffff80'
 	}
 });
 

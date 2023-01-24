@@ -25,13 +25,13 @@ function OrderForm() {
 		<View style={styles.container}>
 			<View style={styles.row}>
 				<Pressable
-					style={[ styles.buyBtn, { backgroundColor: orderType === 'buy' ? '#34bc75' : '#1f2021' } ]}
+					style={[ styles.buyBtn, orderType === 'buy' ? styles.greenBtn : styles.inactiveBtn ]}
 					onPress={() => handleOrderType('buy')}
 				>
 					<Text style={styles.btnText}>Buy</Text>
 				</Pressable>
 				<Pressable
-					style={[ styles.sellBtn, { backgroundColor: orderType === 'buy' ? '#1f2021' : '#d83100' } ]}
+					style={[ styles.sellBtn, orderType === 'buy' ? styles.inactiveBtn : styles.redBtn ]}
 					onPress={() => handleOrderType('sell')}
 				>
 					<Text style={styles.btnText}>Sell</Text>

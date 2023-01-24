@@ -19,14 +19,14 @@ function Market(props) {
 	return (
 		<View>
 			<Pressable style={styles.marketPriceBtn}>
-				<Text style={{ color: '#ffffff80' }}>Market Price</Text>
+				<Text style={styles.inactiveTxt}>Market Price</Text>
 			</Pressable>
 			<View style={styles.availView}>
 				<Pressable onPress={() => setIsAmountSelected(true)} style={styles.amountBtn}>
-					<Text style={{ color: isAmountSelected ? '#fff' : '#ffffff80' }}>Amount</Text>
+					<Text style={isAmountSelected ? styles.activeTxt : styles.inactiveTxt}>Amount</Text>
 				</Pressable>
 				<Pressable onPress={() => setIsAmountSelected(false)} style={styles.amountBtn}>
-					<Text style={{ color: isAmountSelected ? '#ffffff80' : '#fff' }}>Total</Text>
+					<Text style={isAmountSelected ? styles.inactiveTxt : styles.activeTxt}>Total</Text>
 				</Pressable>
 			</View>
 			<StyledAmountInput value={amount} placeholder="(USDT)" onChange={handleAmount} />
@@ -34,7 +34,7 @@ function Market(props) {
 				<Text style={styles.availText}>Avail.</Text>
 				<Text style={styles.availPrice}>0 USDT</Text>
 			</View>
-			<Pressable style={[ styles.button, { backgroundColor: orderType === 'buy' ? '#34bc75' : '#d83100' } ]}>
+			<Pressable style={[ styles.button, orderType === 'buy' ? styles.greenBtn : styles.redBtn ]}>
 				<Text style={styles.btnText}>{orderType === 'buy' ? 'Buy' : 'Sell'} BTC</Text>
 			</Pressable>
 		</View>
