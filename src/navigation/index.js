@@ -108,7 +108,7 @@ export default function Navigation() {
 
 	return (
 		<NavigationContainer>
-			<Stack.Navigator initialRouteName="Main">
+			<Stack.Navigator initialRouteName="Auth">
 				<Stack.Screen name="Auth" component={Auth} options={{ headerShown: false }} />
 				<Stack.Screen name="Main" component={Nav} options={{ headerShown: false }} />
 				<Stack.Screen

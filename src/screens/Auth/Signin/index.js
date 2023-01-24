@@ -1,50 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, TextInput, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import useHandler from '../../../api/useHandler';
-import { AuthenticationDetails, CognitoUser } from 'amazon-cognito-identity-js';
+import { View, TextInput, StyleSheet, TouchableOpacity, Text } from 'react-native'; 
+import { Auth } from 'aws-amplify'; 
 
 export default function Signin() {
-	const navigation = useNavigation();
-	const { userPool } = useHandler();
+	const navigation = useNavigation(); 
 
 	const [ userName, setUserName ] = useState('');
 	const [ password, setPassword ] = useState('');
 	const [ errortext, setErrortext ] = useState('');
- 
-	const handleLogin = () => {
-		const authenticationData = {
-			Username: userName,
-			Password: password
-		};
-		const authDetails = new AuthenticationDetails(authenticationData);
-		const userData = {
-			Username: userName,
-			Pool: userPool
-		};
 
-		const congnitoUser = new CognitoUser(userData);
-
-		congnitoUser.authenticateUser(authDetails, {
-			onSuccess: async result => {
-				const token = result?.refreshToken?.token;
-				await AsyncStorage.setItem('REFRESH_TOKEN', token);
-
-				setTimeout(() => {
-					navigation.navigate('TradingViewChartScreen');
-				}, 350)
-			},
-			onFailure: err => {
-				console.log(err);
-				const { message } = err;
-				setErrortext(message);
-			},
-			newPasswordRequired: function(userAttributes, requiredAttributes) {
-				delete userAttributes.email_verified;
-
-				sessionUserAttributes = userAttributes;
-			}
-		});
+	const handleLogin = async () => {
+		try {
+			await Auth.signIn(userName, password).then(async (res) => {
+				if(res?.Session) {  
+					navigation.navigate('TradingViewChartScreen');	 
+				}
+			});
+		} catch (error) {
+			setErrortext(error)
+			console.log('Error!!', error.message, 'danger');
+		} 
 
 		setUserName('');
 		setPassword('');
@@ -56,7 +32,7 @@ export default function Signin() {
 			<TextInput
 				style={styles.inputStyle}
 				onChangeText={(UserEmail) => setUserName(UserEmail)}
-				placeholder="Username"
+				placeholder="Email"
 				placeholderTextColor="#8b9cb5"
 				autoCapitalize="none"
 				keyboardType="default"
